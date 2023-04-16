@@ -18,7 +18,7 @@ In the designing of the climate app, a python file (app.py) was written to creat
 #### Precipiation Data
 The jupyter notebook file (climate_starter.ipynb) was written to perform some queries of the data using SQLAlchemy. This allowed us to find the most recent date in the database and then determine the precipitation amounts in inches for every date in the previous year, which was then plotted as a graph, which can be seen here:
 
-  - [Insert Graph here]
+![Precipitation Graph](https://raw.githubusercontent.com/jonnybrammah/sqlalchemy-challenge/main/Images/prcp_chart.png)
 
 The mean amount of preciipitation over the previous twelve months was 0.17 inches, with a maximum rainfall of 6.7 inches and an expected minimum of zero inches on a rainless day.
 
@@ -42,3 +42,6 @@ The top three routes are all static and return:
 - A list of all the stations in the database
 - Temperature data by date from the most active station, for the last year of data
 
+The last two routes are dynamic and return:
+- The maximum, minimum and average temperatures between a user-specified start date and the final date in the database
+- The maximum, minimum and average temperatures between a user-specified start date and a user-specified end date
