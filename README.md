@@ -8,8 +8,8 @@ In the initial data analysis and exploration, SQLAlchemy was used in a jupyter n
 In the designing of the climate app, a python file (app.py) was written to create a Flash application, which generates a landing page and then allows the retreival of information from several static and some dynamic routes.
 
 ### Table of Contents
-- [1. Analysis and Exploration of Climate Data](https://github.com/jonnybrammah/sql-challenge/blob/main/README.md#analysis-and-exploration-of-climate-data)
-- [2. Designing Climate App](https://github.com/jonnybrammah/sql-challenge/blob/main/README.md#designing-climate-app)
+- [1. Analysis and Exploration of Climate Data](https://github.com/jonnybrammah/sqlalchemy-challenge/blob/main/README.md#analysis-and-exploration-of-climate-data)
+- [2. Designing Climate App](https://github.com/jonnybrammah/sqlalchemy-challenge/blob/main/README.md#designing-climate-app)
 
 ### Analysis and Exploration of Climate Data
 #### Precipiation Data
