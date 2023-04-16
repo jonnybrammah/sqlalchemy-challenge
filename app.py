@@ -143,28 +143,11 @@ def minmaxmean_temps(start):
     average_temperature = session.query(Measurement.station , func.avg(Measurement.tobs)).\
         filter(Measurement.date >= start).all()
 
+    #Query the most recent date in the database to use in case the user queries a date beyond this
+    max_date = session.query(func.max(Measurement.date)).first()
 
     #Close the session after the query is complete
     session.close()
-
-#My indepdnent work that worked but was inelegant:
-    # tobs_values = []
-
-    # for station, min in lowest_temperature:
-    #     min_temp_dict = {}
-    #     min_temp_dict["tmin"] = min
-    #     tobs_values.append(min_temp_dict)
-    # print("min temp added")
-    # for station, max in highest_temperature:
-    #     max_temp_dict = {}
-    #     max_temp_dict["tmax"] = max
-    #     tobs_values.append(max_temp_dict)
-    # print("max temp added")
-    # for station, average in average_temperature:
-    #     avg_temp_dict = {}
-    #     avg_temp_dict["tavg"] = average
-    #     tobs_values.append(avg_temp_dict)
-    #    return jsonify(tobs_values)
 
     # Create a dictionary to store the temperature values
     tobs_values = {}
@@ -176,10 +159,15 @@ def minmaxmean_temps(start):
     tobs_values.update(lowest_temp_dict)
     tobs_values.update(avg_temp_dict)
     tobs_values.update(highest_temp_dict)
+
     # Return the dictionary as a JSON response
-    return jsonify(tobs_values)
 
-
+    #If the start date is in range, return the tobs_value dictionary
+    if start <= max_date[0]:
+        return jsonify(tobs_values)
+    #If the start date is out of range, return an eror message
+    else: 
+        return jsonify({"error": f"Start date {start} out of range."}, 404)
 
 
 ########################################################################################################
@@ -198,28 +186,11 @@ def minmaxmean_temps_start_and_end(start, end):
         filter(Measurement.date >= start).\
         filter(Measurement.date <= end).all()
 
+    #Query the most recent date in the database to use in case the user queries a date beyond this
+    max_date = session.query(func.max(Measurement.date)).first()
 
     #Close the session after the query is complete
     session.close()
-
-    ## My independent work that was a little inelegant:
-    # tobs_values = []
-
-    # for station, min in lowest_temperature:
-    #     min_temp_dict = {}
-    #     min_temp_dict["tmin"] = min
-    #     tobs_values.append(min_temp_dict)
-    # print("min temp added")
-    # for station, max in highest_temperature:
-    #     max_temp_dict = {}
-    #     max_temp_dict["tmax"] = max
-    #     tobs_values.append(max_temp_dict)
-    # print("max temp added")
-    # for station, average in average_temperature:
-    #     avg_temp_dict = {}
-    #     avg_temp_dict["tavg"] = average
-    #     tobs_values.append(avg_temp_dict)
-    # return jsonify(tobs_values)
 
     ## Work completed with the help of askBCS
     # Create a dictionary to store the temperature values
@@ -232,14 +203,18 @@ def minmaxmean_temps_start_and_end(start, end):
     tobs_values.update(lowest_temp_dict)
     tobs_values.update(avg_temp_dict)
     tobs_values.update(highest_temp_dict)
+
     # Return the dictionary as a JSON response
-    return jsonify(tobs_values)
 
-
-
+    #If the start date is in range, return the tobs_value dictionary
+    if start <= max_date[0]:
+        return jsonify(tobs_values)
+    #If the start date is out of range, return an eror message
+    else: 
+        return jsonify({"error": f"Start date {start} out of range."}, 404)
 
 
 ################################################################################
-#Jonny, you moron, do not delete this line of code.
+
 if __name__ == '__main__':
     app.run(debug=True)
