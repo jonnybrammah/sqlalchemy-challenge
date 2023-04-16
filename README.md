@@ -18,11 +18,14 @@ In the designing of the climate app, a python file (app.py) was written to creat
 #### Precipiation Data
 The jupyter notebook file (climate_starter.ipynb) was written to perform some queries of the data using SQLAlchemy. This allowed us to find the most recent date in the database and then determine the precipitation amounts in inches for every date in the previous year, which was then plotted as a graph, which can be seen here:
 
+  - [Insert Graph here]
 
 The mean amount of preciipitation over the previous twelve months was 0.17 inches, with a maximum rainfall of 6.7 inches and an expected minimum of zero inches on a rainless day.
 
 #### Temperature Data
 There are several weather stations in the database, and code was written to determine the station that had recorded the most data. This station was then used to analyze temperatures, to determine the coldest and warmest temperatures recorded, as well as the average temperature. Again, the previous year of data were queried and a histogram was plotted of this data, which can be seen here:
+
+![Observed Temperature Histogram](https://raw.githubusercontent.com/jonnybrammah/sqlalchemy-challenge/main/Images/tobs_histogram.png)
 
 The lowest temperature recorded at the most active station was 54°F, and the highest was 85°F, consistent with Hawaii's climate, and the average temperature at this station over the previous twelve months was 72°F.
 
