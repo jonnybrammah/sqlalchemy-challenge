@@ -35,8 +35,10 @@ The lowest temperature recorded at the most active station was 54°F, and the hi
 Once the main pieces of data had been analyzed in the jupyter notebook, a python file (app.py) was created to generate a Flask application to display the raw data in json form.
 The landing page returns all the possible routes a user could use to collect data from, and looks like this:
 
+![Landing Page](https://raw.githubusercontent.com/jonnybrammah/sqlalchemy-challenge/main/Images/landing_page.png)
 
 The top three routes are all static and return:
 - Precipitation data (in inches) by date in the database for the last year of data
 - A list of all the stations in the database
 - Temperature data by date from the most active station, for the last year of data
+
